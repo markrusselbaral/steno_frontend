@@ -1,10 +1,11 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-import HomePage from './views/HomePage.vue'
+import { RouterView } from 'vue-router'
+// import HomePage from './views/HomePage.vue'
+// import UserRegistration from './views/UserRegistration.vue'
 </script>
 
 <template>
-  <HomePage/>
+  <RouterView/>
 </template>
 
 <style scoped>
