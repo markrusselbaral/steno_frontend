@@ -17,24 +17,27 @@
     </div>
 
 
-
-    <div class="all-items-center" v-if="isDivHidden">
-         <center>
-            <div style="margin-top: 20px;">
-               <h1 class="header-title">Guess The Logo</h1>
-               <hr style="border: 3px solid #ff9100; border-radius: 10px; width: 100px; margin-bottom: 20px;" />
-               <div class="alert-box"></div>
-               <div class="hinl-place"></div>
-               <p class="qustion"></p>
-               <input type="text" class="answer" placeholder="Type Your Answer" />
-               <br/>
-               <button class="skip"> skip </button>
-               <button class="reveal"> reveal </button>
-               <br>
-               <input type="button" class="submit-btn" value="submit"/>
-            </div>
-         </center>
+    <form @submit.prevent="submitAnswer" v-if="isDivHidden">
+  <div class="all-items-center">
+    <center>
+      <div style="margin-top: 20px;">
+        <h1 class="header-title">Guess the Logo</h1>
+        <img :src="getImageUrl(responseData.user_quiz.image)" alt="My Image" style="width: 150px;">
+        <hr style="border: 3px solid #ff9100; border-radius: 10px; width: 100px; margin-bottom: 20px;" />
+        <div class="alert-box"></div>
+        <div class="hinl-place"></div>
+        <p class="qustion"></p>
+        <input type="text" class="answer" placeholder="Type Your Answer" v-model="answer"/>
+        <br/>
+        <!-- <button class="skip"> skip </button>
+        <button class="reveal"> reveal </button> -->
+        <br>
+        <button type="submit" class="submit-btn" value="submit">submit</button>
       </div>
+    </center>
+  </div>
+</form>
+
 </template>
 
 
@@ -50,10 +53,19 @@ export default {
       isSubmitting: false,
       isClicked: false,
       isDivHidden: false,
+      laravelAppUrl: 'http://127.0.0.1:8000',
+      quiz_id: "",
+      user_id: "",
+      answer: "",
+      uid:"",
+      responseData: {}
       
     };
   },
   methods: {
+    getImageUrl(filename) {
+      return `${this.laravelAppUrl}/images/${filename}`;
+    },
     
     async saveUser() {
         this.isClicked = true;
@@ -66,12 +78,30 @@ export default {
           }
         );
         console.log(response.data);
+        this.responseData = response.data;
         this.isDivHidden = true;
-        this.isDivHidden2 = false;
       } catch (error) {
         console.error(error);
       }finally {
         this.isSubmitting = false;
+      }
+    },
+
+    async submitAnswer() {
+      try {
+        const response = await axios.post(
+            ApiConfig.getBaseUrl() + '/quiz', 
+          {
+            answer: this.answer,
+            quiz_id: this.responseData.user_quiz.quiz_id,
+            user_id: this.responseData.user_quiz.user_id,
+            uid: this.responseData.user_quiz.user_id
+          }
+        );
+        console.log(response.data);
+        this.responseData = response.data;
+      } catch (error) {
+        console.error(error);
       }
     },
   },
