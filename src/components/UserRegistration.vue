@@ -161,7 +161,7 @@ export default {
       isSubmitting: false,
       isClicked: false,
       isDivHidden: false,
-      laravelAppUrl: "http://127.0.0.1:8000",
+      laravelAppUrl: "https://steknows.bisubilar.org",
       quiz_id: "",
       user_id: "",
       answer: "",
