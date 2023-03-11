@@ -1,6 +1,6 @@
 class ApiConfig {
     constructor() {
-      this.baseUrl = "https://steknows.bisubilar.org";
+      this.baseUrl = "https://steknows.bisubilar.org/api";
     }
   
     getBaseUrl() {
