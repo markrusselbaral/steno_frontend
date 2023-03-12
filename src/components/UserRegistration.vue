@@ -212,7 +212,7 @@ export default {
         console.log(response.data);
         this.responseData = response.data;
         if (response.data.user_quiz == null) {
-          alert("asd");
+          alert(this.score.score);
           await this.getScore();
         }
         this.answer = ""; // clear the input field
