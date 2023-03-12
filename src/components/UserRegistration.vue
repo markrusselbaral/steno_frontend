@@ -171,7 +171,7 @@ export default {
   },
   methods: {
     getImageUrl(filename) {
-      return `${this.laravelAppUrl}/images/steno${filename}`;
+      return `${this.laravelAppUrl}/images/steno/${filename}`;
     },
 
     async saveUser() {
