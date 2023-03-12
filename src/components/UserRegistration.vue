@@ -168,6 +168,8 @@ export default {
       answer: "",
       uid: "",
       responseData: {},
+      responseData2: {},
+      score: {},
     };
   },
   methods: {
@@ -184,6 +186,7 @@ export default {
         });
         console.log(response.data);
         this.responseData = response.data;
+        this.responseData2 = response.data;
         this.isDivHidden = true;
       } catch (error) {
         console.error(error);
@@ -194,6 +197,7 @@ export default {
     async submitTwice() {
       await this.submitAnswer();
       await this.submitAnswer();
+      // await this.mounted();
     },
 
     async submitAnswer() {
@@ -207,18 +211,27 @@ export default {
         });
         console.log(response.data);
         this.responseData = response.data;
-
-        this.answer = ""; // clear the input field
         if (response.data.user_quiz == null) {
-          alert("Your score has been recorded");
+          await this.getScore();
         }
+        this.answer = ""; // clear the input field
       } catch (error) {
         console.error(error);
       } finally {
         this.isSubmitting = false;
       }
+    },
 
-      // Reset responseData to empty object
+    async getScore() {
+      try {
+        const response = await axios.get(
+          ApiConfig.getBaseUrl() + "/score/" + this.responseData2.user_quiz.user_id
+        );
+        this.score = response.data.score;
+        alert("Your Score is " + this.score);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
