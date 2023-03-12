@@ -115,7 +115,7 @@
     <div class="all-items-center">
       <center>
         <div style="margin-top: 20px">
-          <h1 class="header-title">Guess the Logo</h1>
+          <h1 class="header-title">Ste-Knows</h1>
           <img
             :src="getImageUrl(responseData.user_quiz.image)"
             alt="My Image"
