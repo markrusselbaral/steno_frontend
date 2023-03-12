@@ -90,7 +90,7 @@
   </div>
   <div class="container" v-if="!isDivHidden">
     <form id="form" @submit.prevent="saveUser">
-      <h1>Registration</h1>
+      <h1>Enter Your Name</h1>
       <div class="input-control">
         <label for="firstname">Firstname</label>
         <input id="firstname" name="firstname" v-model="firstname" type="text" required />
@@ -119,7 +119,7 @@
           <img
             :src="getImageUrl(responseData.user_quiz.image)"
             alt="My Image"
-            style="width: 150px"
+            style="width: 150px; height: 150px"
           />
           <hr
             style="
@@ -171,7 +171,7 @@ export default {
   },
   methods: {
     getImageUrl(filename) {
-      return `${this.laravelAppUrl}/images/${filename}`;
+      return `${this.laravelAppUrl}/images/steno${filename}`;
     },
 
     async saveUser() {
@@ -208,6 +208,9 @@ export default {
         this.responseData = response.data;
 
         this.answer = ""; // clear the input field
+        if (response.data.user_quiz == null) {
+          alert("Your score has been recorded");
+        }
       } catch (error) {
         console.error(error);
       } finally {

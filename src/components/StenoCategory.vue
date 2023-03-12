@@ -92,7 +92,7 @@
   <div class="containers">
     <div id="contitle">
       <span id="title" style="width: 400px; height: 70px; font-size: 1.9em">
-        <img src="../assets/type.png" alt="" />&nbsp;&nbsp; Ste Knows</span
+        <img src="../assets/type.png" alt="" />&nbsp;&nbsp; Ste Knows?</span
       >
     </div>
     <div class="cardcontainer">
@@ -108,7 +108,7 @@
             border: 1px solid grey;
           "
         >
-          PLAY
+          Coming Soon...
         </button>
       </div>
       <div class="cards2">
@@ -123,7 +123,7 @@
             border: 1px solid grey;
           "
         >
-          PLAY
+          Coming Soon...
         </button>
       </div>
       <div class="cards3">
@@ -138,7 +138,7 @@
             border: 1px solid grey;
           "
         >
-          PLAY
+          Coming Soon...
         </button>
       </div>
       <div class="cards4">
@@ -153,7 +153,7 @@
             border: 1px solid grey;
           "
         >
-          PLAY
+          Coming Soon...
         </button>
       </div>
     </div>
