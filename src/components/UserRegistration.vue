@@ -121,14 +121,7 @@
             alt="My Image"
             style="width: 150px; height: 150px; border: 1px solid black"
           />
-          <hr
-            style="
-              border: 3px solid #ff9100;
-              border-radius: 10px;
-              width: 100px;
-              margin-bottom: 20px;
-            "
-          />
+
           <div class="alert-box"></div>
           <div class="hinl-place"></div>
           <p class="qustion"></p>
