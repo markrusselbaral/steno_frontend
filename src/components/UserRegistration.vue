@@ -119,7 +119,7 @@
           <img
             :src="getImageUrl(responseData.user_quiz.image)"
             alt="My Image"
-            style="width: 150px; height: 150px"
+            style="width: 150px; height: 150px; border: 1px solid black"
           />
           <hr
             style="

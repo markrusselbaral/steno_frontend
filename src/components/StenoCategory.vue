@@ -92,7 +92,7 @@
   <div class="containers">
     <div id="contitle">
       <span id="title" style="width: 400px; height: 70px; font-size: 1.9em">
-        <img src="../assets/type.png" alt="" />&nbsp;&nbsp; Ste Knows?</span
+        <img src="../assets/type.png" alt="" />&nbsp;&nbsp; Ste-Knows?</span
       >
     </div>
     <div class="cardcontainer">
