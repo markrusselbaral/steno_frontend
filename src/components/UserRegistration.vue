@@ -130,7 +130,6 @@
             alt="My Image"
             style="width: 150px; height: 150px; border: 1px solid black"
           />
-          <div v-if="!scoreDiv">Your Score is {{ score.score }}</div>
           <div class="alert-box"></div>
           <div class="hinl-place"></div>
           <p class="qustion"></p>
