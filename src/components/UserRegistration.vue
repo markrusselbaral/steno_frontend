@@ -88,6 +88,7 @@
       }"
     />
   </div>
+
   <div class="container" v-if="!isDivHidden">
     <form id="form" @submit.prevent="saveUser">
       <h1>Enter Your Name</h1>
@@ -129,7 +130,7 @@
             alt="My Image"
             style="width: 150px; height: 150px; border: 1px solid black"
           />
-
+          <div v-if="!scoreDiv">Your Score is {{ score.score }}</div>
           <div class="alert-box"></div>
           <div class="hinl-place"></div>
           <p class="qustion"></p>
@@ -170,6 +171,7 @@ export default {
       responseData: {},
       responseData2: {},
       score: {},
+      scoreDiv: false,
     };
   },
   methods: {
@@ -212,7 +214,7 @@ export default {
         console.log(response.data);
         this.responseData = response.data;
         if (response.data.user_quiz == null) {
-          alert(this.score.score);
+          // alert(this.score.score);
           await this.getScore();
         }
         this.answer = ""; // clear the input field
@@ -224,11 +226,13 @@ export default {
     },
 
     async getScore() {
+      this.scoreDiv = true;
       try {
         const response = await axios.get(
           ApiConfig.getBaseUrl() + "/score/" + this.responseData2.user_quiz.user_id
         );
         this.score = response.data.score;
+
         alert("Your Score is " + this.score);
       } catch (error) {
         console.log(error);
